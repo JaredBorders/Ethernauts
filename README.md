@@ -24,3 +24,6 @@ This challenge is based on https://ethernaut.openzeppelin.com/
 # Helpful Tip
 
 - You can console.log in solidity using hardhat! Read here for more details: https://hardhat.org/tutorial/debugging-with-hardhat-network.html
+
+# To Test All
+npx hardhat test contracts/1.\ CoinFlip/CoinFlip.test.ts contracts/2.\ Delegation/Delegation.test.ts contracts/3.\ Force/Force.test.ts contracts/4.\ Vault/Vault.test.ts contracts/5.\ King/King.test.ts contracts/6.\ Reentrance/Reentrance.test.ts contracts/7.\ Denial/Denial.test.ts 
